@@ -1,3 +1,5 @@
+# 부대복귀와 비슷한 문제
+
 from collections import deque
 
 
@@ -13,12 +15,14 @@ def solution(n, edge):
     dist = [-1 for _ in range(len(edge)+1)]
     dist[1] = 0
 
+    # 처음에는 dist sort 후 dist.count(max(dist))
+    # 시간 복잡도를 줄이기 위해 수정
     maxDist = 0
     count = 0
     while queue:
         start = queue.popleft()
         if maxDist < dist[start]:
-            count = 1
+            count = 1  # 초기화
             maxDist = dist[start]
         elif maxDist == dist[start]:
             count += 1
